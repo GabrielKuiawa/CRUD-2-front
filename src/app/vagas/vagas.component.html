@@ -1,7 +1,12 @@
-<div *ngFor="let vagas of vagas$ | async">
-    <p>{{ vagas.id }}</p>
-    <p>{{ vagas.titulo }}</p>
-    <p>{{ vagas.salario }}</p>
-    <p>{{ vagas.descricao }}</p>
-    <p>{{ vagas.empresa_id }}</p>
+<div *ngFor="let vagas of vagas$ | async" class="card">
+    <div class="card-vagas">
+        <div class="card-body">
+          <h5 class="card-text">{{ vagas.titulo }}</h5>
+          <p class="card-text">O que a empresa esta a procura : </p>
+          <p class="card-text">{{ vagas.descricao }}</p>
+          <p class="card-text">proposta de salario: R$: {{ vagas.salario }}</p>
+          <p class="card-text">empresa requisitada {{ vagas.empresa_id }}</p>
+          <a class="btn btn-primary">candidatar-se</a>
+        </div>
+    </div>
 </div>

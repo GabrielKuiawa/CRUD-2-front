@@ -9,13 +9,17 @@ import { MaterialModule } from './angular_material/material/material.module';
 
 import { AppComponent } from './app.component';
 import { VagasComponent } from './vagas/vagas.component';
+import { EmpresasComponent } from './empresas/empresas.component';
+import { EmpresasCadastroComponent } from './empresas/empresas-cadastro/empresas-cadastro.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VagasComponent
+    VagasComponent,
+    EmpresasComponent,
+    EmpresasCadastroComponent
   ],
   imports: [
     BrowserModule,
