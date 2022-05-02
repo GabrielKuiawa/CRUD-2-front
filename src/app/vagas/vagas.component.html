@@ -1,0 +1,7 @@
+<div *ngFor="let vagas of vagas$ | async">
+    <p>{{ vagas.id }}</p>
+    <p>{{ vagas.titulo }}</p>
+    <p>{{ vagas.salario }}</p>
+    <p>{{ vagas.descricao }}</p>
+    <p>{{ vagas.empresa_id }}</p>
+</div>
