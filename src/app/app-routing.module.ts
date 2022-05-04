@@ -7,7 +7,9 @@ import { VagasComponent } from './vagas/vagas.component';
 const routes: Routes = [
   {path:'vagas',component:VagasComponent},
   {path:'empresas',component:EmpresasComponent},
-  {path:'empresas/cadastro',component:EmpresasCadastroComponent}
+  {path:'empresas/cadastro',component:EmpresasCadastroComponent},
+  {path:'empresas/editar',component:EmpresasCadastroComponent},
+  {path:'empresas/editar/id',component:EmpresasCadastroComponent}
 ];
 
 @NgModule({

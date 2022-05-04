@@ -12,4 +12,5 @@ export class EmpresasService extends CrudService<Empresas> {
   constructor(protected override http:HttpClient) {
     super(http,`${environment.API}empresas`);
   }
+  
 }

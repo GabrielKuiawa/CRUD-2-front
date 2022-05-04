@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './angular_material/material/material.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+import { EmpresasCadastroComponent } from './empresas/empresas-cadastro/empresas-cadastro.component';
 import { AppComponent } from './app.component';
 import { VagasComponent } from './vagas/vagas.component';
 import { EmpresasComponent } from './empresas/empresas.component';
-import { EmpresasCadastroComponent } from './empresas/empresas-cadastro/empresas-cadastro.component';
 
 
 
@@ -25,6 +27,9 @@ import { EmpresasCadastroComponent } from './empresas/empresas-cadastro/empresas
     BrowserModule,
     HttpClientModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

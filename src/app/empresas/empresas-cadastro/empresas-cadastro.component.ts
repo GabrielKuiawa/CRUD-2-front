@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../empresas.service';
 
 @Component({
@@ -9,14 +10,33 @@ import { EmpresasService } from '../empresas.service';
 })
 export class EmpresasCadastroComponent implements OnInit {
   form!: FormGroup;
-  constructor(private service:EmpresasService) { }
+  submitted = false;
+  constructor(
+    private service:EmpresasService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) 
+  { 
+    this.form = this.fb.group({
+      nome:[null],
+      image:[null]      
+    });
+  };
+
+  
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(){
-    this.service.save(this.form.value).subscribe(
-    )
+    this.service.save(this.form.value)
+      .subscribe(result => console.log(result),error => console.log(error))
   }
-
+  onCancel() {
+    this.submitted = false;
+    this.form.reset();
+    // console.log('onCancel');
+  }
 }
