@@ -1,0 +1,31 @@
+<button mat-raised-button color="accent" (click)="comum()">Usuario comum</button>
+<button mat-raised-button color="warn" (click)="empresa()">Usuario empresa</button>
+<div [ngSwitch]="usuario">
+    <mat-card *ngSwitchCase="true">
+        <h5>Usuario</h5>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>email</mat-label>
+            <input matInput >
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>nome</mat-label>
+            <input matInput >
+        </mat-form-field>
+        <button class="pular"mat-raised-button color="accent" [routerLink]="['/vagas']">entrar</button>
+    </mat-card>
+
+    
+    <mat-card *ngSwitchCase="false">
+        <h5>Empresa</h5>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>CNPJ</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>nome</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <button class="pular" mat-raised-button color="warn"[routerLink]="['/empresa']">entrar</button>
+    </mat-card>    
+    <mat-card *ngSwitchDefault>escolha uma opção</mat-card>
+</div>

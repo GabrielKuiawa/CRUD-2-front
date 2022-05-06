@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../empresas.service';
 
 @Component({
-  selector: 'app-empresas-cadastro',
-  templateUrl: './empresas-cadastro.component.html',
-  styleUrls: ['./empresas-cadastro.component.css']
+  selector: 'app-empresas-form',
+  templateUrl: './empresas-form.component.html',
+  styleUrls: ['./empresas-form.component.css']
 })
-export class EmpresasCadastroComponent implements OnInit {
+export class EmpresasFormComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   constructor(

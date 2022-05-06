@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, empty, map, Observable } from 'rxjs';
-import { Empresas } from './empresa';
-import { EmpresasService } from './empresas.service';
+import { Empresas } from '../empresa';
+import { EmpresasService } from '../empresas.service';
 
 @Component({
-  selector: 'app-empresas',
-  templateUrl: './empresas.component.html',
-  styleUrls: ['./empresas.component.css']
+  selector: 'app-perfil-empresa',
+  templateUrl: './perfil-empresa.component.html',
+  styleUrls: ['./perfil-empresa.component.css']
 })
-export class EmpresasComponent implements OnInit {
+export class PerfilEmpresaComponent implements OnInit {
+
   empresa$!:Observable<Empresas[]>
 
   constructor(
@@ -42,5 +43,4 @@ export class EmpresasComponent implements OnInit {
       error => console.log("tudo errado")
     );  
   }  
-
 }

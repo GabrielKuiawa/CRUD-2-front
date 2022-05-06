@@ -4,20 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './angular_material/material/material.module';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from './shared/material.module';
+import { EmpresasModule } from './empresas/empresas.module';
 
 
 import { AppComponent } from './app.component';
-import { VagasComponent } from './vagas/vagas.component';
-import { EmpresasModule } from './empresas/empresas.module';
+import { VagasComponent } from './vagas/todas-as-vagas/vagas.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { CandidaturaComponent } from './vagas/candidatura/candidatura.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VagasComponent
+    VagasComponent,
+    UsuarioComponent,
+    CandidaturaComponent
   ],
   imports: [
     BrowserModule,

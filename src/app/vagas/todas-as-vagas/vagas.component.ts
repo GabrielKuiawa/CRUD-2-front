@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, empty, map, Observable } from 'rxjs';
-import { Vagas } from './vagas';
-import { VagasService } from './vagas.service';
+import { Vagas } from '../vagas';
+import { VagasService } from '../vagas.service';
 
 @Component({
   selector: 'app-vagas',

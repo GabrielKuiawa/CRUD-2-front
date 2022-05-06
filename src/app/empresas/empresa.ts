@@ -1,5 +1,5 @@
 export interface Empresas {
     id:number,
-    empresas:string,
+    nome:string,
     imagem:string
 };
