@@ -1,6 +1,36 @@
+.botao{
+    margin: 5rem auto 0;
+    width: 40%;
+}
+.card{
+    margin: 0 auto;
+    width: 40%;
+    min-width: 10rem;
+    text-align: center;
+}
 .input{
     padding-left: 1rem;
+    max-width: 100%;
+    display: block;
 }
 .pular{
     display: block;
+    margin-left: 5%;
+}
+/* .card-default{
+    msa
+    width: 20%;
+} */
+@media only screen and (max-width: 600px) {
+    .card{
+        margin: 0 auto;
+        width: 100%;
+        min-width: 10rem;
+        text-align: center;
+    }
+    .input{
+        padding-left: 1rem;
+        display: block;
+        max-width: 100%;
+    }
 }

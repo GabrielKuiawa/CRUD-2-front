@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { VagasComponent } from './vagas/todas-as-vagas/vagas.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { CandidaturaComponent } from './vagas/candidatura/candidatura.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -30,6 +31,8 @@ import { CandidaturaComponent } from './vagas/candidatura/candidatura.component'
     HttpClientModule,
     MaterialModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
