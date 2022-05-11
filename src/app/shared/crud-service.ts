@@ -33,7 +33,7 @@ export class CrudService<T>{
         return this.http.delete(`${this.API_URl}/${id}`).pipe(take(1));
     }
     login(registro:T){
-        return this.http.post(`${this.API_URl}`,JSON.stringify(registro)).pipe(first());
+        return this.http.post(`${this.API_URl}`,registro).pipe(first());
     }
 
 }

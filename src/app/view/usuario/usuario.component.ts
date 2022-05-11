@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { json } from 'sequelize/dist';
 import { EmpresasService } from '../empresas/empresas.service';
 import { UsuarioService } from './usuario.service';
 
@@ -65,10 +64,13 @@ export class UsuarioComponent implements OnInit {
 
   onSubmit(){
     // this.formUsuario.value
-    console.log(this.formUsuario.value);
+    // console.log(this.formUsuario.value);
+    // const token = window.localStorage.getItem('token');
+    // console.log(token)
    
-    return this.service.login(this.formUsuario.value).subscribe()
-    
+    return this.service.login(this.formUsuario.value).subscribe(data => 
+      console.log(JSON.parse(JSON.stringify(data)).token.split())
+    )
       // .subscribe(result => console.log(result),error => console.log(error))
   }
   onCancel() {

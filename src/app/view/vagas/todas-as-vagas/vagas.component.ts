@@ -25,7 +25,7 @@ export class VagasComponent implements OnInit {
       catchError((error: any) => {
         console.error(error);
         return empty();
-      }))
+    }))
   }
 
 }

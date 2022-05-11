@@ -10,7 +10,7 @@ import { Usuario } from './usuario';
 export class UsuarioService extends CrudService<Usuario>{
 
   constructor(protected override http: HttpClient) {
-    super(http,`${environment.API}usuarios`);
+    super(http,`${environment.API}usuarios/login`);
   }
 
 }
