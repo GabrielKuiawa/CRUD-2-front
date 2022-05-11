@@ -67,12 +67,22 @@ export class UsuarioComponent implements OnInit {
     // console.log(this.formUsuario.value);
     // const token = window.localStorage.getItem('token');
     // console.log(token)
-   
-    return this.service.login(this.formUsuario.value).subscribe(data => 
-      console.log(JSON.parse(JSON.stringify(data)).token.split())
-    )
-      // .subscribe(result => console.log(result),error => console.log(error))
+    // .subscribe(result => console.log(result),error => console.log(error))
+    return this.service.login(this.formUsuario.value).subscribe(data => {
+      const token = JSON.parse(JSON.stringify(data)).token.split()
+      // console.log(token);
+      localStorage.setItem("meu token: ",token);
+    },error =>{
+      console.log('login não funcionou ',error)
+    })
   }
+  login(user: any) {
+    return new Promise((resolve) => {
+      window.localStorage.setItem('token', 'meu-token');
+      resolve(true);
+    });
+  }
+
   onCancel() {
     this.submitted = false;
     this.form.reset();
