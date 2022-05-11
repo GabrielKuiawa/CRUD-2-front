@@ -4,34 +4,39 @@
 </section>
 <section>
     <div [ngSwitch]="usuario">
-        <mat-card class="card" *ngSwitchCase="true">
+
+        <mat-card class="card" *ngSwitchCase="true" novalidate [formGroup]="formUsuario">
             <h5>Usuario</h5>
-            <mat-form-field appearance="fill" class="input" novalidate [formGroup]="form">
-                <mat-label>email</mat-label>
-                <input matInput >
+            <mat-form-field appearance="fill" class="input" >
+                <mat-label>email </mat-label>
+                <input matInput formControlName="email">
             </mat-form-field>
+
             <mat-form-field appearance="fill" class="input">
-                <mat-label>nome</mat-label>
-                <input matInput >
+                <mat-label>senha </mat-label>
+                <input matInput formControlName="senha">
             </mat-form-field>
-            <button type="button" mat-raised-button (click)="fileInput.click()">imagem do usuario</button>
-            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
-            <button class="pular"mat-raised-button color="accent" [routerLink]="['/vagas']">entrar</button>
+            
+            <button class="pular"mat-raised-button color="accent" (click)="onSubmit()">entrar</button>
         </mat-card>
      
         
         <mat-card class="card"  *ngSwitchCase="false">
+
             <h5>Empresa</h5>
             <mat-form-field appearance="fill" class="input">
                 <mat-label>CNPJ</mat-label>
                 <input matInput>
             </mat-form-field>
+
             <mat-form-field appearance="fill" class="input">
                 <mat-label>nome</mat-label>
                 <input matInput>
             </mat-form-field>
+
             <button type="button" mat-raised-button (click)="fileInput.click()">imagem da empresa</button>
             <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+
             <button class="pular" mat-raised-button color="warn"[routerLink]="['/empresa']">entrar</button>
         </mat-card>    
         <mat-card class="card" *ngSwitchDefault>escolha uma opção</mat-card>

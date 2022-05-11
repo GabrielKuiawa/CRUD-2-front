@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { json } from 'sequelize/dist';
 import { EmpresasService } from '../empresas/empresas.service';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -13,20 +15,25 @@ export class UsuarioComponent implements OnInit {
   @Input() usuario!: Boolean ;
   srcResult: any;
   form!: FormGroup;
+  formUsuario!:FormGroup;
   submitted = false;
   
   constructor(
-    private service:EmpresasService,
+    private service:UsuarioService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) 
   { 
-    this.form = this.fb.group({
-      nome:[null],
-      image:[null]      
+    // this.form = this.fb.group({
+    //   nome:[null],
+    //   image:[null]      
+    // });
+    this.formUsuario = this.fb.group({
+      email:[null],
+      senha:[null]
     });
-  }
+  };
 
 
   ngOnInit(): void {
@@ -40,6 +47,8 @@ export class UsuarioComponent implements OnInit {
     this.usuario = false
     return this.usuario
   }
+
+  //imagem
   onFileSelected() {
     const inputNode: any = document.querySelector('#file');
   
@@ -55,8 +64,12 @@ export class UsuarioComponent implements OnInit {
   }
 
   onSubmit(){
-    this.service.save(this.form.value)
-      .subscribe(result => console.log(result),error => console.log(error))
+    // this.formUsuario.value
+    console.log(this.formUsuario.value);
+   
+    return this.service.login(this.formUsuario.value).subscribe()
+    
+      // .subscribe(result => console.log(result),error => console.log(error))
   }
   onCancel() {
     this.submitted = false;

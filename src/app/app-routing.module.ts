@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutEmpresaComponent } from './empresas/layout-empresa/layout-empresa.component';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { CandidaturaComponent } from './vagas/candidatura/candidatura.component';
-import { VagasComponent } from './vagas/todas-as-vagas/vagas.component';
+import { LayoutEmpresaComponent } from './view/empresas/layout-empresa/layout-empresa.component';
+import { UsuarioComponent } from './view/usuario/usuario.component';
+import { CandidaturaComponent } from './view/vagas/candidatura/candidatura.component';
+import { VagasComponent } from './view/vagas/todas-as-vagas/vagas.component';
 
 const routes: Routes = [
   {path:'',component:UsuarioComponent},
@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'vagas/candidatura',component:CandidaturaComponent},
   {path:'empresa',component:LayoutEmpresaComponent},
   {path:'empresas',
-  loadChildren: () => import('./empresas/empresas.module').then(m => m.EmpresasModule)
+  loadChildren: () => import('./view/empresas/empresas.module').then(m => m.EmpresasModule)
   }
 ];
 
