@@ -17,29 +17,27 @@
                 <input matInput formControlName="senha">
             </mat-form-field>
             
-            <button class="pular"mat-raised-button color="accent" (click)="onSubmit()">entrar</button>
+            <button class="pular"mat-raised-button color="accent" (click)="login()">entrar</button>
         </mat-card>
      
-        
-        <mat-card class="card"  *ngSwitchCase="false">
-
+        <div>
+             <mat-card class="card"  *ngSwitchCase="false" novalidate [formGroup]="formEmpresa">
             <h5>Empresa</h5>
             <mat-form-field appearance="fill" class="input">
                 <mat-label>CNPJ</mat-label>
-                <input matInput>
+                <input matInput formControlName="cnpj">
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="input">
-                <mat-label>nome</mat-label>
-                <input matInput>
+                <mat-label>senha</mat-label>
+                <input matInput formControlName="senha">
             </mat-form-field>
 
-            <button type="button" mat-raised-button (click)="fileInput.click()">imagem da empresa</button>
-            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
-
-            <button class="pular" mat-raised-button color="warn"[routerLink]="['/empresa']">entrar</button>
+            <button class="pular" mat-raised-button color="warn"(click)="loginEmpresa()">entrar</button>
         </mat-card>    
         <mat-card class="card" *ngSwitchDefault>escolha uma opção</mat-card>
+
+        </div>
     </div>
 </section>
 

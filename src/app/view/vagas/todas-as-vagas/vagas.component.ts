@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, empty, map, Observable } from 'rxjs';
 import { Vagas } from '../vagas';
 import { VagasService } from '../vagas.service';
@@ -13,8 +14,9 @@ export class VagasComponent implements OnInit {
   vagas$!:Observable<Vagas[]>
 
   constructor(
-    private service:VagasService
-  ) {}
+    private service:VagasService,
+    private router : Router
+  ) {} 
 
   ngOnInit(): void {
     this.listar();
@@ -26,6 +28,10 @@ export class VagasComponent implements OnInit {
         console.error(error);
         return empty();
     }))
+  }
+  Logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../empresas/empresas.service';
-import { UsuarioService } from './usuario.service';
+import { EmpresaLoginService, UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -13,12 +13,13 @@ export class UsuarioComponent implements OnInit {
 
   @Input() usuario!: Boolean ;
   srcResult: any;
-  form!: FormGroup;
+  formEmpresa!: FormGroup;
   formUsuario!:FormGroup;
   submitted = false;
   
   constructor(
     private service:UsuarioService,
+    // private serviceEmpresa:EmpresaLoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
@@ -30,6 +31,10 @@ export class UsuarioComponent implements OnInit {
     // });
     this.formUsuario = this.fb.group({
       email:[null],
+      senha:[null]
+    });
+    this.formEmpresa = this.fb.group({
+      cnpj:[null],
       senha:[null]
     });
   };
@@ -62,7 +67,7 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  onSubmit(){
+  login(){
     // this.formUsuario.value
     // console.log(this.formUsuario.value);
     // const token = window.localStorage.getItem('token');
@@ -71,22 +76,21 @@ export class UsuarioComponent implements OnInit {
     return this.service.login(this.formUsuario.value).subscribe(data => {
       const token = JSON.parse(JSON.stringify(data)).token.split()
       // console.log(token);
-      localStorage.setItem("meu token: ",token);
+      localStorage.setItem("token",token);
+      this.router.navigate(['/vagas']);
     },error =>{
       console.log('login não funcionou ',error)
     })
   }
-  login(user: any) {
-    return new Promise((resolve) => {
-      window.localStorage.setItem('token', 'meu-token');
-      resolve(true);
-    });
-  }
-
-  onCancel() {
-    this.submitted = false;
-    this.form.reset();
-    // console.log('onCancel');
+  loginEmpresa(){
+    // return this.serviceEmpresa.login(this.formUsuario.value).subscribe(data => {
+    //   const token = JSON.parse(JSON.stringify(data)).token.split()
+    //   // console.log(token);
+    //   localStorage.setItem("token",token);
+    //   this.router.navigate(['/empresa']);
+    // },error =>{
+    //   console.log('login não funcionou ',error)
+    // })
   }
 
 }

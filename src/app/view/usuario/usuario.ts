@@ -3,3 +3,7 @@ export interface Usuario {
     senha:string,
     nome:string
 }
+export interface EmpresaLogin{
+    cnpj:string,
+    senha:string
+}
