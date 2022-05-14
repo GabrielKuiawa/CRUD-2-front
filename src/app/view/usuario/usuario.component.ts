@@ -27,11 +27,7 @@ export class UsuarioComponent implements OnInit {
     private router: Router
   ) 
   { 
-    // this.form = this.fb.group({
-    //   nome:[null],
-    //   image:[null]      
-    // });
-    this.formUsuario = this.fb.group({
+       this.formUsuario = this.fb.group({
       email:[null],
       senha:[null]
     });
@@ -71,11 +67,6 @@ export class UsuarioComponent implements OnInit {
 
   
   login(){
-    // this.formUsuario.value
-    // console.log(this.formUsuario.value);
-    // const token = window.localStorage.getItem('token');
-    // console.log(token)
-    // .subscribe(result => console.log(result),error => console.log(error))
     return this.service.login(this.formUsuario.value).subscribe(data => {
       const token = JSON.parse(JSON.stringify(data)).token.split()
       // console.log(token);
@@ -91,8 +82,9 @@ export class UsuarioComponent implements OnInit {
       console.log(this.serviceEmpresa);
       
       const token = JSON.parse(JSON.stringify(data)).token.split()
-      // console.log(token);
+
       localStorage.setItem("token:empresa",token);
+      
       this.router.navigate(['/empresa']);
     },error =>{
       console.log('login não funcionou ',error)

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, empty, map, Observable } from 'rxjs';
+import { VagasEmpresa } from '../vagasEmpresas';
+import { VagasEmpresasService } from './vagasEmp.service';
 
 @Component({
   selector: 'app-vagas-empresa',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VagasEmpresaComponent implements OnInit {
 
-  constructor() { }
+  vagasEmpresa$!:Observable<VagasEmpresa[]>
+  constructor(private service:VagasEmpresasService) { }
 
   ngOnInit(): void {
+    console.log(this.vagasEmpresa$)
+  }
+  listar(){
+    this.vagasEmpresa$ = this.service.list().pipe(
+      map(result => result.empresa),
+      catchError((error: any) => {
+        console.error(error);
+        return empty();
+    }))
   }
 
 }

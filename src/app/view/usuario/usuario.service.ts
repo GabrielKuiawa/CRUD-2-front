@@ -12,7 +12,9 @@ export class UsuarioService extends CrudService<Usuario>{
   constructor(protected override http: HttpClient) {
     super(http,`${environment.API}usuarios/login`);
   }
-
+  check(): boolean {
+    return localStorage.getItem('token') ? true : false;
+  }
 }
 
 
