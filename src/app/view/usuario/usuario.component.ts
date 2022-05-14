@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../empresas/empresas.service';
-import { EmpresaLoginService, UsuarioService } from './usuario.service';
+import { EmpresaLoginService } from './empresa-login.service';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -19,8 +20,9 @@ export class UsuarioComponent implements OnInit {
   
   constructor(
     private service:UsuarioService,
-    // private serviceEmpresa:EmpresaLoginService,
+    private serviceEmpresa:EmpresaLoginService,
     private fb: FormBuilder,
+    private fbe: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) 
@@ -34,7 +36,7 @@ export class UsuarioComponent implements OnInit {
       senha:[null]
     });
     this.formEmpresa = this.fb.group({
-      cnpj:[null],
+      cnpj:[],
       senha:[null]
     });
   };
@@ -67,6 +69,7 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
+  
   login(){
     // this.formUsuario.value
     // console.log(this.formUsuario.value);
@@ -83,14 +86,17 @@ export class UsuarioComponent implements OnInit {
     })
   }
   loginEmpresa(){
-    // return this.serviceEmpresa.login(this.formUsuario.value).subscribe(data => {
-    //   const token = JSON.parse(JSON.stringify(data)).token.split()
-    //   // console.log(token);
-    //   localStorage.setItem("token",token);
-    //   this.router.navigate(['/empresa']);
-    // },error =>{
-    //   console.log('login não funcionou ',error)
-    // })
+    console.log(this.formEmpresa.value)
+    return this.serviceEmpresa.login(this.formEmpresa.value).subscribe(data => {
+      console.log(this.serviceEmpresa);
+      
+      const token = JSON.parse(JSON.stringify(data)).token.split()
+      // console.log(token);
+      localStorage.setItem("token:empresa",token);
+      this.router.navigate(['/empresa']);
+    },error =>{
+      console.log('login não funcionou ',error)
+    })
   }
 
 }
