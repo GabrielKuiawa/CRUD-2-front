@@ -31,6 +31,7 @@ export class VagasComponent implements OnInit {
   }
   Logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
     this.router.navigate(['/']);
   }
 

@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmpresasService } from '../empresas/empresas.service';
-import { EmpresaLoginService } from './empresa-login.service';
-import { UsuarioService } from './usuario.service';
+import { EmpresasService } from '../../empresas/empresas.service';
+import { EmpresaLoginService } from '../empresa-login.service';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-usuario',
@@ -13,7 +13,7 @@ import { UsuarioService } from './usuario.service';
 export class UsuarioComponent implements OnInit {
 
   @Input() usuario!: Boolean ;
-  srcResult: any;
+
   formEmpresa!: FormGroup;
   formUsuario!:FormGroup;
   submitted = false;
@@ -22,12 +22,11 @@ export class UsuarioComponent implements OnInit {
     private service:UsuarioService,
     private serviceEmpresa:EmpresaLoginService,
     private fb: FormBuilder,
-    private fbe: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) 
   { 
-       this.formUsuario = this.fb.group({
+    this.formUsuario = this.fb.group({
       email:[null],
       senha:[null]
     });
@@ -49,28 +48,16 @@ export class UsuarioComponent implements OnInit {
     this.usuario = false
     return this.usuario
   }
-
-  //imagem
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-  
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
-  
-      reader.onload = (e: any) => {
-        this.srcResult = e.target.result;
-      };
-  
-      reader.readAsArrayBuffer(inputNode.files[0]);
-    }
-  }
-
   
   login(){
     return this.service.login(this.formUsuario.value).subscribe(data => {
+      
+      const usuario = JSON.parse(JSON.stringify(data)).usuarioEmail.split()    
+      
       const token = JSON.parse(JSON.stringify(data)).token.split()
-      // console.log(token);
+   
       localStorage.setItem("token",token);
+      localStorage.setItem("usuario",usuario);
       this.router.navigate(['/vagas']);
     },error =>{
       console.log('login não funcionou ',error)
@@ -79,15 +66,18 @@ export class UsuarioComponent implements OnInit {
   loginEmpresa(){
     console.log(this.formEmpresa.value)
     return this.serviceEmpresa.login(this.formEmpresa.value).subscribe(data => {
-      console.log(this.serviceEmpresa);
+      console.log(data);
       
+      const empresa = JSON.parse(JSON.stringify(data)).cnpj.split()    
+
       const token = JSON.parse(JSON.stringify(data)).token.split()
 
       localStorage.setItem("token:empresa",token);
+      localStorage.setItem("cnpj",empresa);
       
       this.router.navigate(['/empresa']);
     },error =>{
-      console.log('login não funcionou ',error)
+      console.log('login não funcionou ')
     })
   }
 

@@ -1,0 +1,46 @@
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.botao{
+    margin: 5rem auto 0;
+    width: 40%;
+}
+.card{
+    margin: 0 auto;
+    width: 40%;
+    min-width: 10rem;
+    text-align: center;
+}
+.input{
+    padding-left: 1rem;
+    max-width: 100%;
+    display: block;
+}
+.pular{
+    display: block;
+    margin-left: 5%;
+}
+/* .card-default{
+    msa
+    width: 20%;
+} */
+.botaoCadastro{
+    width: 40%;
+    padding: 0;
+}
+    
+@media only screen and (max-width: 600px) {
+    .card{
+        margin: 5rem auto;
+        width: 100%;
+        min-width: 10rem;
+        text-align: center;
+    }
+    .input{
+        padding-left: 1rem;
+        display: block;
+        max-width: 100%;
+    }
+}

@@ -17,6 +17,7 @@ export class LayoutEmpresaComponent implements OnInit {
   }
   Logout() {
     localStorage.removeItem('token:empresa');
+    localStorage.removeItem('cnpj');
     this.router.navigate(['/']);
   }
 

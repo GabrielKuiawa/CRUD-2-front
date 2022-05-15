@@ -1,9 +1,10 @@
+
 .botao{
     margin: 5rem auto 0;
     width: 40%;
 }
 .card{
-    margin: 0 auto;
+    margin: 5rem auto;
     width: 40%;
     min-width: 10rem;
     text-align: center;
@@ -21,9 +22,14 @@
     msa
     width: 20%;
 } */
+.botaoCadastro{
+    width: 40%;
+    padding: 0;
+}
+    
 @media only screen and (max-width: 600px) {
     .card{
-        margin: 0 auto;
+        margin: 5rem auto;
         width: 100%;
         min-width: 10rem;
         text-align: center;

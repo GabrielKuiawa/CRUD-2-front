@@ -1,12 +1,12 @@
 <section class="botao">
-    <button mat-raised-button color="accent" (click)="comum()">Usuario comum</button>
-    <button mat-raised-button color="warn" (click)="empresa()">Usuario empresa</button>
+    <button mat-raised-button color="accent" (click)="comum()">Usuário comum</button>
+    <button mat-raised-button color="warn" (click)="empresa()">Usuário empresa</button>
 </section>
 <section>
     <div [ngSwitch]="usuario">
 
-        <mat-card class="card" *ngSwitchCase="true" novalidate [formGroup]="formUsuario">
-            <h5>Usuario</h5>
+        <mat-card class="card" *ngSwitchDefault  [formGroup]="formUsuario">
+            <h5>Usuário</h5>
             <mat-form-field appearance="fill" class="input" >
                 <mat-label>email </mat-label>
                 <input matInput formControlName="email">
@@ -17,11 +17,12 @@
                 <input matInput formControlName="senha">
             </mat-form-field>
             
-            <button class="pular"mat-raised-button color="accent" (click)="login()">entrar</button>
+            <button class="botaoCadastro" mat-raised-button color="primary" [routerLink]="['cadastro']">cadastrar</button>
+            <button class="botaoCadastro"mat-raised-button color="accent" (click)="login()">entrar</button>
         </mat-card>
      
         <div>
-             <mat-card class="card"  *ngSwitchCase="false" novalidate [formGroup]="formEmpresa">
+             <mat-card class="card"  *ngSwitchCase="false"  [formGroup]="formEmpresa">
             <h5>Empresa</h5>
             <mat-form-field appearance="fill" class="input">
                 <mat-label>CNPJ</mat-label>
@@ -33,10 +34,10 @@
                 <input matInput formControlName="senha">
             </mat-form-field>
 
-            <button class="pular" mat-raised-button color="warn"(click)="loginEmpresa()">entrar</button>
-        </mat-card>    
-        <mat-card class="card" *ngSwitchDefault>escolha uma opção</mat-card>
+            <button class="botaoCadastro" mat-raised-button color="primary" routerLink="cadastro/empresa">cadastrar</button>
+            <button class="botaoCadastro" mat-raised-button color="warn"(click)="loginEmpresa()">entrar</button>
 
+        </mat-card>    
         </div>
     </div>
 </section>
