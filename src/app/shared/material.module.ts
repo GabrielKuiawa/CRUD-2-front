@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
  
 
 
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

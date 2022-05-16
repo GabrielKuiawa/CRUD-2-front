@@ -1,2 +1,24 @@
-<button mat-button (click)="openDialog()">Open dialog</button>
+<h1 mat-dialog-title>Adicionar Vagas </h1>
+<div mat-dialog-content [formGroup]="form">
+
+  <mat-form-field appearance="fill">
+    <mat-label> Titulo </mat-label>
+    <input matInput formControlName="titulo" >
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label> Salario</mat-label>
+    <input matInput formControlName="salario">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label> descricao </mat-label>
+    <input matInput formControlName="descricao">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button  (click)="onNoClick()">cancelar</button>
+  <button mat-button  cdkFocusInitial (click)="adicionar()">adicionar</button>
+</div>
 

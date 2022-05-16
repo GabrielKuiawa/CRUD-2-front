@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { CadastroComponent } from './view/usuario/cadastro_usuario/cadastro.component';
 import { CadastroEmpresaComponent } from './view/usuario/cadastro-empresa/cadastro-empresa.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from './view/dialog/dialog/dialog.component';
 
 
@@ -46,7 +47,11 @@ import { DialogComponent } from './view/dialog/dialog/dialog.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
+  providers: [ 
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

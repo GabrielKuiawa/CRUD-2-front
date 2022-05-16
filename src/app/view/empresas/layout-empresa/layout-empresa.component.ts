@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogComponent } from '../../dialog/dialog/dialog.component';
+import { Vagas } from '../../vagas/vagas';
 
 @Component({
   selector: 'app-layout-empresa',
@@ -8,8 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LayoutEmpresaComponent implements OnInit {
 
-  constructor(
-    private router : Router
+
+  constructor
+  (
+    private router : Router,
+    public dialog: MatDialog,
+    private fb: FormBuilder
 
   ) { }
 
@@ -17,8 +25,17 @@ export class LayoutEmpresaComponent implements OnInit {
   }
   Logout() {
     localStorage.removeItem('token:empresa');
-    localStorage.removeItem('cnpj');
+    localStorage.removeItem('id');
     this.router.navigate(['/']);
   }
 
+  openDialog(criar:Vagas | null): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',data: criar === null       
+    }); 
+    console.log(dialogRef.componentInstance.form);
+
+  }
 }
+
+

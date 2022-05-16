@@ -12,5 +12,8 @@ export class VagasService extends CrudService<Vagas>{
   constructor(protected override http:HttpClient) {
     super(http, `${environment.API}vagas`);
   }
+  getId(){
+    return localStorage.getItem('id')
+  }
 
 }

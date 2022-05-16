@@ -44,7 +44,6 @@ export class CadastroComponent implements OnInit {
     }
   }
   cadastrar(){
-    console.log(this.form.value);
     return this.service.save(this.form.value).subscribe(data =>{
       console.log(data);     
       this.router.navigate(['/']);

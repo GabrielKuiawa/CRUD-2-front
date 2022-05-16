@@ -68,12 +68,12 @@ export class UsuarioComponent implements OnInit {
     return this.serviceEmpresa.login(this.formEmpresa.value).subscribe(data => {
       console.log(data);
       
-      const empresa = JSON.parse(JSON.stringify(data)).cnpj.split()    
+      const empresa = JSON.parse(JSON.stringify(data)).id    
 
       const token = JSON.parse(JSON.stringify(data)).token.split()
 
       localStorage.setItem("token:empresa",token);
-      localStorage.setItem("cnpj",empresa);
+      localStorage.setItem("id",empresa);
       
       this.router.navigate(['/empresa']);
     },error =>{
