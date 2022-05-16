@@ -21,8 +21,9 @@ export class DialogComponent implements OnInit {
     private service:VagasService
   ) { 
     this.form = this.fb.group({
-      titulo:[null],
-      salario:[null],
+      id:[data.id_vag],
+      titulo:[data.titulo],
+      salario:[data.salario],
       descricao:[null],
       empresa_id:[this.service.getId()]
     })    
@@ -37,7 +38,6 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
   adicionar(){
-    console.log(this.form.value);
     return this.service.save(this.form.value).subscribe(data => {
       this.onNoClick(); 
       console.log(data);

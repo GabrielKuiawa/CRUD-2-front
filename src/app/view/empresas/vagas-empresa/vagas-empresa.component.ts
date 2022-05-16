@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, empty, map, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, empty, map, observable, Observable, Subscription } from 'rxjs';
+import { DialogComponent } from '../../dialog/dialog/dialog.component';
+import { Vagas } from '../../vagas/vagas';
 import { VagasEmpresa } from '../vagasEmpresas';
 import { VagasEmpresasService } from './vagasEmp.service';
 
@@ -11,18 +14,51 @@ import { VagasEmpresasService } from './vagasEmp.service';
 export class VagasEmpresaComponent implements OnInit {
 
   vagasEmpresa$!:Observable<VagasEmpresa[]>
-  constructor(private service:VagasEmpresasService) { }
+  subscription!: Subscription 
+
+  constructor(
+    private service:VagasEmpresasService,
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
     this.listar()
+    
   }
   listar(){
-    return this.service.list().subscribe(data=>console.log(data))
-    //   map(result => result.empresa),
-    //   catchError((error: any) => {
-    //     console.error(error);
-    //     return empty();
-    // }))
+    this.vagasEmpresa$ = this.service.list().pipe(
+      map(result => result.EmpresaId.tudo),
+      catchError((error: any) => {
+        console.error(error);
+        return empty();
+    }))
+
+    this.subscription = this.vagasEmpresa$.subscribe()
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+    // this.vagasEmpresa$.next([])
+  }
+  openDialogEdit(vagas:any): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',data: {
+        id_vag:vagas.id_vag,
+        titulo:vagas.titulo,
+        salario:vagas.salario,
+        descricao:vagas.descricao,
+      }      
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      this.listar()
+      // alert("cdf")
+    });
+  }
+  
+  delete(id:number){
+    return this.service.remove(id).subscribe(data => {
+      this.listar()
+    })    
   }
 
 }

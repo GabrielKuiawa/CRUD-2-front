@@ -33,8 +33,6 @@ export class LayoutEmpresaComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',data: criar === null       
     }); 
-    console.log(dialogRef.componentInstance.form);
-
   }
 }
 

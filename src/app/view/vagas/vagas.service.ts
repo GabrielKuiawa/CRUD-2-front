@@ -13,7 +13,8 @@ export class VagasService extends CrudService<Vagas>{
     super(http, `${environment.API}vagas`);
   }
   getId(){
-    return localStorage.getItem('id')
+    let id = localStorage.getItem('id')
+    return id
   }
 
 }

@@ -1,12 +1,14 @@
-<div *ngFor="let vagas of vagasEmpresa$ | async" class="card">
+<div *ngFor="let vagas of vagasEmpresa$ | async" class="card">  
     <div class="card-vagas">
         <div class="card-body">
-          <h5 class="card-text"></h5>
-          <p class="card-text">O que a empresa esta a procura : </p>
-          <p class="card-text">{{ vagas.nome }}</p>
-          <p class="card-text">proposta de salario: R$: {{ vagas.nome }}</p>
-          <p class="card-text">empresa requisitada {{ vagas.tudo.result }}</p>
-          <a class="btn btn-primary">candidatar-se</a>
+          <h1 class="card-text"> Empresa: {{ vagas.nome }}</h1>
+          <p class="card-text"></p>
+          <p class="card-text"> Titulo da vaga: {{ vagas.titulo }}</p>
+          <button mat-flat-button color="primary" class="botao" (click)="openDialogEdit(vagas)">
+            <mat-icon> border_color</mat-icon>editar</button>
+          <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+            <mat-icon class="icon" (click)="delete(vagas.id_vag)" >delete</mat-icon>
+          </button>
         </div>
     </div>
 </div>

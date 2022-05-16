@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../../empresas/empresas.service';
+import { VagasService } from '../../vagas/vagas.service';
 import { EmpresaLoginService } from '../empresa-login.service';
 import { UsuarioService } from '../usuario.service';
 
@@ -23,7 +24,8 @@ export class UsuarioComponent implements OnInit {
     private serviceEmpresa:EmpresaLoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private vagas:VagasService
   ) 
   { 
     this.formUsuario = this.fb.group({
@@ -64,16 +66,16 @@ export class UsuarioComponent implements OnInit {
     })
   }
   loginEmpresa(){
-    console.log(this.formEmpresa.value)
     return this.serviceEmpresa.login(this.formEmpresa.value).subscribe(data => {
-      console.log(data);
       
-      const empresa = JSON.parse(JSON.stringify(data)).id    
+      const empresa_id = JSON.parse(JSON.stringify(data)).id;
 
-      const token = JSON.parse(JSON.stringify(data)).token.split()
+      const token = JSON.parse(JSON.stringify(data)).token.split();
 
       localStorage.setItem("token:empresa",token);
-      localStorage.setItem("id",empresa);
+
+
+      localStorage.setItem("id",empresa_id);
       
       this.router.navigate(['/empresa']);
     },error =>{

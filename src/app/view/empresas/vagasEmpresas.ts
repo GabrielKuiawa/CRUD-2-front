@@ -3,9 +3,6 @@ export interface VagasEmpresa {
     nome:string;
     id_vag:number;
     titulo:string;
-    tudo:{
-        result:string[]
-    }
 };
 // EmpresaId: {
 //     tudo:result,
