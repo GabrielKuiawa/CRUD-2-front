@@ -1,11 +1,16 @@
 
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.botao{
-    margin: 5rem auto 0;
+.botoes{
+    margin: 5rem auto 0.65rem;
     width: 40%;
+    text-align: center;
+}
+.botao1{
+    width: 50%;
+    border-radius: 6p;
+}
+.botao2{
+    width: 50%;
+    border-radius: 6%;
 }
 .card{
     margin: 0 auto;

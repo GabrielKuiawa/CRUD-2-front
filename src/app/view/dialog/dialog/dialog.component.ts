@@ -13,7 +13,6 @@ import { VagasService } from '../../vagas/vagas.service';
 })
 export class DialogComponent implements OnInit {
   form!:FormGroup;
-  l:number=21;
   constructor(
     @Inject(MAT_DIALOG_DATA) 
     public data: Vagas,

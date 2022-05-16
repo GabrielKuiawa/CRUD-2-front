@@ -1,14 +1,18 @@
-<button class="butao"mat-raised-button color="accent" (click)="Logout()">sair</button>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button class="butao"mat-raised-button color="accent" (click)="Logout()">sair</button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<div *ngFor="let vagas of vagas$ | async" class="card">
+<div *ngFor="let vagas of vagas$ | async" class="card" [formGroup]="cad">
     <div class="card-vagas">
         <div class="card-body">
           <h5 class="card-text">{{ vagas.titulo }}</h5>
           <p class="card-text">O que a empresa esta a procura : </p>
           <p class="card-text">{{ vagas.descricao }}</p>
           <p class="card-text">proposta de salario: R$: {{ vagas.salario }}</p>
-          <p class="card-text">empresa requisitada: {{ vagas.nome }}</p>
-          <a class="btn btn-primary">candidatar-se</a>
+          <p class="card-text" > id da vaga: {{vagas.id_vag}}</p>
+          <a class="btn btn-primary" (click)="candidatar()">candidatar-se</a>
         </div>
     </div>
 </div>

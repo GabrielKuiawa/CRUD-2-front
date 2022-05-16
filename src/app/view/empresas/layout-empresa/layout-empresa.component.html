@@ -1,4 +1,8 @@
-<p>layout-empresa works!</p>
-<button class="butao"mat-raised-button color="accent" (click)="Logout()">sair</button>
-<button mat-raised-button (click)="openDialog(null)" class="adicionar">Adicionar</button>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button class="butao"mat-raised-button color="accent" (click)="Logout()">sair</button>
+        <button mat-raised-button (click)="openDialog(null)" class="adicionar">Adicionar</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <app-vagas-empresa></app-vagas-empresa>

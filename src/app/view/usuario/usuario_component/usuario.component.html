@@ -1,44 +1,46 @@
-<section class="botao">
-    <button mat-raised-button color="accent" (click)="comum()">Usuário comum</button>
-    <button mat-raised-button color="warn" (click)="empresa()">Usuário empresa</button>
-</section>
-<section>
-    <div [ngSwitch]="usuario">
+<div class="container">
+    <section class="botoes">
+        <button class="botao1" mat-raised-button color="accent" (click)="comum()">Usuário comum</button>
+        <button class="botao2" mat-raised-button color="warn" (click)="empresa()">Usuário empresa</button>
+    </section>
+    <section>
+        <div [ngSwitch]="usuario">
 
-        <mat-card class="card" *ngSwitchDefault  [formGroup]="formUsuario">
-            <h5>Usuário</h5>
-            <mat-form-field appearance="fill" class="input" >
-                <mat-label>email </mat-label>
-                <input matInput formControlName="email">
-            </mat-form-field>
+            <mat-card class="card" *ngSwitchDefault  [formGroup]="formUsuario">
+                <h5>Usuário</h5>
+                <mat-form-field appearance="fill" class="input" >
+                    <mat-label>email </mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
 
-            <mat-form-field appearance="fill" class="input">
-                <mat-label>senha </mat-label>
-                <input matInput formControlName="senha">
-            </mat-form-field>
-            
-            <button class="botaoCadastro" mat-raised-button color="primary" [routerLink]="['cadastro']">cadastrar</button>
-            <button class="botaoCadastro"mat-raised-button color="accent" (click)="login()">entrar</button>
-        </mat-card>
-     
-        <div>
-             <mat-card class="card"  *ngSwitchCase="false"  [formGroup]="formEmpresa">
-            <h5>Empresa</h5>
-            <mat-form-field appearance="fill" class="input">
-                <mat-label>CNPJ</mat-label>
-                <input matInput formControlName="cnpj">
-            </mat-form-field>
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>senha </mat-label>
+                    <input matInput formControlName="senha">
+                </mat-form-field>
+                
+                <button class="botaoCadastro" mat-raised-button color="primary" [routerLink]="['cadastro']">cadastrar</button>
+                <button class="botaoCadastro"mat-raised-button color="accent" (click)="login()">entrar</button>
+            </mat-card>
+        
+            <div>
+                <mat-card class="card"  *ngSwitchCase="false"  [formGroup]="formEmpresa">
+                <h5>Empresa</h5>
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>CNPJ</mat-label>
+                    <input matInput formControlName="cnpj">
+                </mat-form-field>
 
-            <mat-form-field appearance="fill" class="input">
-                <mat-label>senha</mat-label>
-                <input matInput formControlName="senha">
-            </mat-form-field>
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>senha</mat-label>
+                    <input matInput formControlName="senha">
+                </mat-form-field>
 
-            <button class="botaoCadastro" mat-raised-button color="primary" routerLink="cadastro/empresa">cadastrar</button>
-            <button class="botaoCadastro" mat-raised-button color="warn"(click)="loginEmpresa()">entrar</button>
+                <button class="botaoCadastro" mat-raised-button color="primary" routerLink="cadastro/empresa">cadastrar</button>
+                <button class="botaoCadastro" mat-raised-button color="warn"(click)="loginEmpresa()">entrar</button>
 
-        </mat-card>    
+            </mat-card>    
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
