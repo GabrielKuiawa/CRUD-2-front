@@ -38,7 +38,7 @@
     
 @media only screen and (max-width: 600px) {
     .card{
-        margin: 5rem auto;
+        margin: 1rem auto 0.35rem 0.35rem;
         width: 100%;
         min-width: 10rem;
         text-align: center;
@@ -47,5 +47,15 @@
         padding-left: 1rem;
         display: block;
         max-width: 100%;
+    }
+    .botoes{
+        width: 40%;
+        display: inline;
+    }
+    .botao1{
+        width: 50%;
+    }
+    .botao2{
+        width: 50%;
     }
 }

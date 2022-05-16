@@ -14,15 +14,15 @@ export class VagasEmpresaComponent implements OnInit {
   constructor(private service:VagasEmpresasService) { }
 
   ngOnInit(): void {
-    console.log(this.vagasEmpresa$)
+    this.listar()
   }
   listar(){
-    this.vagasEmpresa$ = this.service.list().pipe(
-      map(result => result.empresa),
-      catchError((error: any) => {
-        console.error(error);
-        return empty();
-    }))
+    return this.service.list().subscribe(data=>console.log(data))
+    //   map(result => result.empresa),
+    //   catchError((error: any) => {
+    //     console.error(error);
+    //     return empty();
+    // }))
   }
 
 }

@@ -35,8 +35,8 @@ export class CrudService<T>{
     login(registro:T){
         return this.http.post(`${this.API_URl}`,registro).pipe(first());
     }
-    post(registro:any,registro2:T){
-        return this.http.post(this.API_URl,registro,registro2).pipe(first());
+    post(registro:any){
+        return this.http.post(this.API_URl,registro).pipe(first());
     }
 
 }

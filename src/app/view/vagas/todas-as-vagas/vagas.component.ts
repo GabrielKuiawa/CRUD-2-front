@@ -50,9 +50,13 @@ export class VagasComponent implements OnInit {
 
 
  
-  candidatar(){
+  candidatar(id:number){
+    const candidatar = {
+      email:this.candidata.getUsuario(),
+      id_vaga:`${id}`
+    }
 
-    return this.candidata.save(this.cad.value).subscribe(data => {
+    return this.candidata.post(candidatar).subscribe(data => {
       console.log(data);
       
     })

@@ -12,7 +12,7 @@
           <p class="card-text">{{ vagas.descricao }}</p>
           <p class="card-text">proposta de salario: R$: {{ vagas.salario }}</p>
           <p class="card-text" > id da vaga: {{vagas.id_vag}}</p>
-          <a class="btn btn-primary" (click)="candidatar()">candidatar-se</a>
+          <a class="btn btn-primary" (click)="candidatar(vagas.id_vag)">candidatar-se</a>
         </div>
     </div>
 </div>
