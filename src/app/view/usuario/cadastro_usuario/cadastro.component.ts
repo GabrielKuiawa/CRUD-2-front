@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
  import { CadastroService } from './cadastro.service';
 
@@ -16,8 +17,8 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service:CadastroService,
-    private router:Router
-                          
+    private router:Router,
+    private snackBar: MatSnackBar,                          
   ) 
   { 
     this.form = this.fb.group({
@@ -46,10 +47,17 @@ export class CadastroComponent implements OnInit {
   cadastrar(){
     return this.service.save(this.form.value).subscribe(data =>{
       console.log(data);     
+      this.onSuccess()
       this.router.navigate(['/']);
     },error =>{
-      console.log('erro em cadastrar ')
+      this.onError()
     })
+  }
+  private onSuccess() {
+    this.snackBar.open('usuário cadastrada com sucesso!', '', { duration: 3000 });
+  }
+  private onError() {
+    this.snackBar.open('Erro cadastrada usuário', '', { duration: 3000 });
   }
 
 }

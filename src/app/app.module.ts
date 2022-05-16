@@ -15,13 +15,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { VagasComponent } from './view/vagas/todas-as-vagas/vagas.component';
 import { UsuarioComponent } from './view/usuario/usuario_component/usuario.component';
-import { CandidaturaComponent } from './view/vagas/candidatura/candidatura.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { CadastroComponent } from './view/usuario/cadastro_usuario/cadastro.component';
 import { CadastroEmpresaComponent } from './view/usuario/cadastro-empresa/cadastro-empresa.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from './view/dialog/dialog/dialog.component';
+import { PerfilComponent } from './view/usuario/perfil/perfil.component';
 
 
 
@@ -31,10 +31,10 @@ import { DialogComponent } from './view/dialog/dialog/dialog.component';
     AppComponent,
     VagasComponent,
     UsuarioComponent,
-    CandidaturaComponent,
     CadastroComponent,
     CadastroEmpresaComponent,
     DialogComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

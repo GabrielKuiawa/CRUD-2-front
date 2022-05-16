@@ -1,8 +1,7 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button class="butao"mat-raised-button color="accent" (click)="Logout()">sair</button>
-    <!-- <button class="butao"mat-raised-button color="warn" [routerLink]="['/perfil']" >perfil</button> -->
-  </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button class="butao"mat-raised-button color="warn" [routerLink]="['/vagas']" >voltar</button>
+    </mat-toolbar-row>
 </mat-toolbar>
 
 <div *ngFor="let vagas of vagas$ | async" class="card" >
@@ -13,7 +12,7 @@
           <p class="card-text">{{ vagas.descricao }}</p>
           <p class="card-text">proposta de salario: R$: {{ vagas.salario }}</p>
           <p class="card-text" > id da vaga: {{vagas.id_vag}}</p>
-          <a class="btn btn-primary" (click)="candidatar(vagas.id_vag)">candidatar-se</a>
+          <a class="btn btn-primary" >candidatar-se</a>
         </div>
     </div>
 </div>

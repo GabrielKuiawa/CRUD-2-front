@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, empty, map, Observable } from 'rxjs';
 import { CandidatarService } from '../candidatar.service';
@@ -14,7 +15,7 @@ import { VagasService } from '../vagas.service';
 export class VagasComponent implements OnInit {
 
   vagas$!:Observable<Vagas[]>
-  cad!:FormGroup;
+
 
 
 
@@ -23,16 +24,11 @@ export class VagasComponent implements OnInit {
     private service:VagasService,
     private candidata:CandidatarService,
     private router : Router,
+    private snackBar: MatSnackBar,
     private fb: FormBuilder,
 
   ) 
-  {
-    console.log(this.cad);    
-    this.cad = this.fb.group({
-      id_vaga:[null],
-      email:[this.candidata.getUsuario()]
-    })
-  } 
+  {} 
 
   ngOnInit(): void {
     this.listar();
@@ -50,22 +46,26 @@ export class VagasComponent implements OnInit {
 
 
  
-  candidatar(id:number){
+  candidatar(id:number){;
+
     const candidatar = {
       email:this.candidata.getUsuario(),
       id_vaga:`${id}`
     }
 
-    return this.candidata.post(candidatar).subscribe(data => {
-      console.log(data);
-      
-    })
+    return this.candidata.post(candidatar).subscribe(success => this.onSuccess(),error => this.onError())
   }
 
   Logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     this.router.navigate(['/']);
+  }
+  private onSuccess() {
+    this.snackBar.open('vaga cadastrada com sucesso!', '', { duration: 3000 });
+  }
+  private onError() {
+    this.snackBar.open('Erro ao em cadastrar vaga', '', { duration: 3000 });
   }
 
 }

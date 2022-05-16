@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, empty, map, observable, Observable, Subscription } from 'rxjs';
 import { DialogComponent } from '../../dialog/dialog/dialog.component';
 import { Vagas } from '../../vagas/vagas';
@@ -19,6 +20,7 @@ export class VagasEmpresaComponent implements OnInit {
   constructor(
     private service:VagasEmpresasService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     ) { }
 
   ngOnInit(): void {
@@ -60,5 +62,4 @@ export class VagasEmpresaComponent implements OnInit {
       this.listar()
     })    
   }
-
 }

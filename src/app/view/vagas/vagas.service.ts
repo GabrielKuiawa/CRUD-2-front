@@ -16,5 +16,6 @@ export class VagasService extends CrudService<Vagas>{
     let id = localStorage.getItem('id')
     return id
   }
+  
 
 }

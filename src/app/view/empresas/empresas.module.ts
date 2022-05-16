@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmpresasRoutingModule } from './empresas-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PerfilEmpresaComponent } from './perfil-empresa/perfil-empresa.component';
 import { VagasEmpresaComponent } from './vagas-empresa/vagas-empresa.component';
 import { LayoutEmpresaComponent } from './layout-empresa/layout-empresa.component';
 import { MaterialModule } from 'src/app/shared/material.module';
@@ -11,7 +10,6 @@ import { MaterialModule } from 'src/app/shared/material.module';
 
 @NgModule({
   declarations: [
-    PerfilEmpresaComponent,
     VagasEmpresaComponent,
     LayoutEmpresaComponent
   ],
@@ -24,7 +22,6 @@ import { MaterialModule } from 'src/app/shared/material.module';
   ],
   exports:[
     LayoutEmpresaComponent,
-    PerfilEmpresaComponent,
     VagasEmpresaComponent
   ]
 })

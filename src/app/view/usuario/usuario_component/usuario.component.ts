@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { VagasService } from '../../vagas/vagas.service';
@@ -25,6 +26,7 @@ export class UsuarioComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private snackBar: MatSnackBar,
     private vagas:VagasService
   ) 
   { 
@@ -60,9 +62,10 @@ export class UsuarioComponent implements OnInit {
    
       localStorage.setItem("token",token);
       localStorage.setItem("usuario",usuario);
+      this.onSuccess()
       this.router.navigate(['/vagas']);
     },error =>{
-      console.log('login não funcionou ',error)
+      this.onError()
     })
   }
   loginEmpresa(){
@@ -78,9 +81,16 @@ export class UsuarioComponent implements OnInit {
       localStorage.setItem("id",empresa_id);
       
       this.router.navigate(['/empresa']);
+      this.onSuccess()
     },error =>{
-      console.log('login não funcionou ')
+      this.onError()
     })
+  }
+  private onSuccess() {
+    this.snackBar.open('login com sucesso!', '', { duration: 3000 });
+  }
+  private onError() {
+    this.snackBar.open('Erro ao logar', '', { duration: 3000 });
   }
 
 }

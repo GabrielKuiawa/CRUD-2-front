@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { EmpresasService } from '../../empresas/empresas.service';
 
@@ -15,7 +16,8 @@ export class CadastroEmpresaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service:EmpresasService,
-    private router:Router
+    private router:Router,
+    private snackBar: MatSnackBar,
   )
   {
     this.form = this.fb.group({
@@ -44,12 +46,18 @@ export class CadastroEmpresaComponent implements OnInit {
   cadastrar(){
     console.log(this.form.value);
     return this.service.save(this.form.value).subscribe(data =>  {
-      console.log(data);     
+      this.onSuccess()  
       this.router.navigate(['/']);
 
       },error =>{
         console.log('erro em cadastrar ')
       }
     )
+  }
+  private onSuccess() {
+    this.snackBar.open('empresa cadastrada com sucesso!', '', { duration: 3000 });
+  }
+  private onError() {
+    this.snackBar.open('Erro cadastrada empresa', '', { duration: 3000 });
   }
 }
